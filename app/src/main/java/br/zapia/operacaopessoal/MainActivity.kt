@@ -1,26 +1,38 @@
-package br.zapia.operacaopessoal
+package br.zapia.operacaoessoal
 
-import android.app.Activity
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : Activity() {
-    private lateinit var web: WebView
+class MainActivity : AppCompatActivity() {
+    private lateinit var webView: WebView
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        web = WebView(this)
-        web.settings.javaScriptEnabled = true
-        web.settings.domStorageEnabled = true
-        web.settings.allowFileAccess = true
-        web.settings.allowContentAccess = true
-        web.webViewClient = WebViewClient()
-        web.loadUrl("file:///android_asset/index.html")
-        setContentView(web)
+        
+        webView = WebView(this)
+        setContentView(webView)
+
+        webView.webViewClient = WebViewClient()
+        val webSettings: WebSettings = webView.settings
+        webSettings.javaScriptEnabled = true
+        webSettings.domStorageEnabled = true
+        webSettings.loadWithOverviewMode = true
+        webSettings.useWideViewPort = true
+
+        // Carrega o arquivo HTML interno do aplicativo
+        webView.loadUrl("file:///android_asset/index.html")
     }
 
     override fun onBackPressed() {
-        if (web.canGoBack()) web.goBack() else super.onBackPressed()
+        if (webView.canGoBack()) {
+            webView.goBack()
+        } else {
+            super.onBackPressed()
+        }
     }
 }
