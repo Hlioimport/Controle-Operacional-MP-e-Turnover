@@ -1,0 +1,13 @@
+{
+  "background_color": "#f8ebeb",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Controle Operacional Pro",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "MP Turnover",
+  "start_url": "https://hlioimport.github.io/Controle-Operacional-MP-e-Turnover/",
+  "theme_color": "#4c72ba",
+  "id": "br.zapia.operacaoessoal",
+  "description": "Aplicativo de controle operacional e turnover."
+}
